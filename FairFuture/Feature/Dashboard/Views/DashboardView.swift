@@ -19,18 +19,29 @@ struct DashboardView: View {
                 .padding(.bottom, 32)
             }
             .background(Color(.systemGroupedBackground))
-            .navigationTitle("Fair Future")
+            .navigationTitle("Barakah Ledger")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button { vm.showAddCategory = true } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.title3)
+                    HStack(spacing: 4) {
+                        // Nisab Calculator button
+                        Button { vm.showNisabCalculator = true } label: {
+                            Image(systemName: "scalemass")
+                                .font(.title3)
+                        }
+                        // Add category button
+                        Button { vm.showAddCategory = true } label: {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.title3)
+                        }
                     }
                 }
             }
             .sheet(isPresented: $vm.showAddCategory) {
                 AddCategorySheet()
+            }
+            .sheet(isPresented: $vm.showNisabCalculator) {
+                NisabCalculatorView()
             }
             .sheet(item: $vm.selectedCategory) { cat in
                 CategoryDetailView(category: cat)
@@ -120,6 +131,35 @@ struct DashboardView: View {
             }
 
             if categories.isEmpty {
+                // Nisab calculator prompt — shown when no categories yet
+                Button { vm.showNisabCalculator = true } label: {
+                    HStack(spacing: 14) {
+                        ZStack {
+                            Circle()
+                                .fill(Color(hex: "#2E7D6B").opacity(0.12))
+                                .frame(width: 48, height: 48)
+                            Image(systemName: "scalemass")
+                                .font(.system(size: 20))
+                                .foregroundStyle(Color(hex: "#2E7D6B"))
+                        }
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("Calculate your Zakat")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(.primary)
+                            Text("Use the Nisab Calculator to find your obligation")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(16)
+                    .cardStyle()
+                }
+                .buttonStyle(.plain)
+
                 EmptyStateView(
                     icon: "heart.text.square",
                     title: "No Categories Yet",
