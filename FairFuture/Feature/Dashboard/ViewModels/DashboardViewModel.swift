@@ -7,8 +7,9 @@ import Combine
 @MainActor
 final class DashboardViewModel: ObservableObject {
 
-    @Published var showAddCategory = false
-    @Published var showAddTransaction = false
+    @Published var showAddCategory      = false
+    @Published var showAddTransaction   = false
+    @Published var showNisabCalculator  = false
     @Published var selectedCategory: DonationCategory?
     @Published var errorMessage: String?
 
@@ -46,7 +47,7 @@ final class DashboardViewModel: ObservableObject {
         let amount: Double
         let date: Date
     }
-    
+
     func monthlyChartData(from categories: [DonationCategory]) -> [MonthlyDataPoint] {
         var grouped: [Date: Double] = [:]
         let calendar = Calendar.current
