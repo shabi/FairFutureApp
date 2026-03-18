@@ -4,6 +4,9 @@ iOS app to track Islamic charitable giving — Zakat, Fitra, Khums &amp; Sadaqah
 # ff · Fair Future
 
 > **Track every blessing.** A privacy-first Islamic charity tracking app for Muslims to manage Zakat, Fitra, Khums, Sadaqah and daily giving — built natively for iPhone.
+<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-03-16 at 15 40 42" src="https://github.com/user-attachments/assets/f47be57f-a816-4c6b-bb55-9795ca927cc1" />
+
+
 
 <br/>
 
