@@ -19,7 +19,7 @@ struct DashboardView: View {
                 .padding(.bottom, 32)
             }
             .background(Color(.systemGroupedBackground))
-            .navigationTitle("Barakah Ledger")
+            .navigationTitle("Fair Future")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
